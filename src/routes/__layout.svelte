@@ -4,7 +4,7 @@
 
 <style>
     .container {
-        max-width: 800px;
+        max-width: 600px;
         margin: 50px auto;
     }
 </style>

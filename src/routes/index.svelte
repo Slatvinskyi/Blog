@@ -13,19 +13,31 @@ export const load = async({fetch}) => {
 </script>
 
 <script>
-    export let posts;
+      export let posts;
+      let searchTerm = "";
+      $: searchedPosts = posts.filter((post) =>{
+          return post.title.includes(searchTerm) || post.body.includes(searchTerm);
+
+      });
+         
 </script>
 
 <h1>Posts</h1>
 
+<input type="text" placeholder="search" bind:value={searchTerm} />
+
 <div class="posts">
-    {#each posts as item}
+{#if searchedPosts.length}
+    {#each searchedPosts as item}
     <div class="post">
         <h2>{item.title.substring(0, 20)}</h2>
         <p>{item.body.substring(0, 80)}</p>
         <p class="link"><a sveltekit:prefetch href={`/blog/${item.id}`}>read more</a></p>
     </div>
     {/each}
+    {:else}
+    <p>No posts found with "{searchTerm}"</p>
+    {/if}
 </div>
 
 <style>
@@ -33,6 +45,7 @@ export const load = async({fetch}) => {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-gap: 20px;
+        margin: 30px 0;
 
     }
 

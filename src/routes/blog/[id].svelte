@@ -22,11 +22,12 @@
 </script>
 
 <script>
+    
     export let post;
     export let user;
 </script>
 
 <h1>{post.title}</h1>
 <p>{post.body}</p>
-<p>- Written by <a href={`/authors/${user.id}`}>{user.name}</a></p>
+<p>- Written by <a sveltekit:prefetch href={`/authors/${user.id}`}>{user.name}</a></p>
 
