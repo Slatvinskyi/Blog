@@ -50,7 +50,7 @@ export const load = async({fetch}) => {
     }
 
     .post {
-        padding: 10px;
+        padding: 20px;
         border: 1px solid #ddd;
     }
 
@@ -61,5 +61,25 @@ export const load = async({fetch}) => {
 
     .link {
         text-align: right;
+    }
+
+    input {
+        border: 1px solid #ddd;
+        padding: 10px 20px;
+        border-radius: 5px;
+    }
+    
+
+    @media screen and (max-width: 600px) {
+
+        .posts {
+        display: grid;
+        grid-template-columns:  1fr;
+        grid-gap: 20px;
+        margin: 30px 0;
+
+    }
+
+        
     }
     </style>
